@@ -6,13 +6,13 @@
 /*   By: annunes- <annunes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 01:05:15 by annunes-          #+#    #+#             */
-/*   Updated: 2021/09/03 23:26:18 by annunes-         ###   ########.fr       */
+/*   Updated: 2021/09/04 18:29:47 by annunes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	lettercount(const char *s, char c)
+static size_t	lcounter(const char *s, char c)
 {
 	int			lcount;
 
@@ -22,7 +22,7 @@ static size_t	lettercount(const char *s, char c)
 	return (lcount);
 }
 
-static size_t	wordcount(char const *s, char c)
+static size_t	wcounter(char const *s, char c)
 {
 	size_t		lcount;
 	size_t		wcount;
@@ -51,14 +51,14 @@ static size_t	wordcount(char const *s, char c)
 char	**ft_split(char const *s, char c)
 {
 	size_t		wcount;
-	char		**receiver;
+	char		**array;
 	int			lcount;
 
 	if (!s)
 		return (0);
-	wcount = wordcount(s, c);
-	receiver = ft_calloc(wcount + 1, sizeof(char *));
-	if (!receiver)
+	wcount = wcounter(s, c);
+	array = ft_calloc(wcount + 1, sizeof(char *));
+	if (!array)
 		return (0);
 	lcount = -1;
 	wcount = 0;
@@ -66,10 +66,10 @@ char	**ft_split(char const *s, char c)
 	{
 		if (s[lcount] != c && s[lcount] != '\0')
 		{
-			receiver[wcount] = ft_substr(s, lcount, lettercount(&s[lcount], c));
+			array[wcount] = ft_substr(s, lcount, lcounter(&s[lcount], c));
 			++wcount;
-			lcount = lcount + lettercount(&s[lcount], c) - 1;
+			lcount = lcount + lcounter(&s[lcount], c) - 1;
 		}
 	}
-	return (receiver);
+	return (array);
 }
