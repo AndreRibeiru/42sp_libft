@@ -6,7 +6,7 @@
 /*   By: annunes- <annunes-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/27 15:30:26 by annunes-          #+#    #+#             */
-/*   Updated: 2021/09/04 17:01:36 by annunes-         ###   ########.fr       */
+/*   Updated: 2021/09/13 22:37:02 by annunes-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_isspace(char c)
 	return (0);
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	neg;
 	int	i;
